@@ -1,0 +1,30 @@
+#BlueJ class context
+comment0.target=VotingPaper
+comment1.params=s
+comment1.target=VotingPaper(java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ VotingPaper.\ \r\n\ s\ will\ be\ a\ (possibly\ empty)\ sequence\ of\ integers,\ separated\ by\ commas.\ \r\n\ e.g.\ if\ s\ is\ "1,22,-13,456",\ marks\ is\ set\ to\ <1,22,-13,456>.\ \r\n
+comment2.params=
+comment2.target=java.util.ArrayList\ getMarks()
+comment2.text=\r\n\ Returns\ the\ contents\ of\ the\ paper.\r\n
+comment3.params=noOfCandidates
+comment3.target=boolean\ isCorrectLength(int)
+comment3.text=\r\n\ Returns\ true\ iff\ the\ paper\ has\ the\ correct\ number\ of\ marks,\ \r\n\ i.e.\ one\ for\ each\ candidate.\ \r\n
+comment4.params=total
+comment4.target=boolean\ isLegalTotal(int)
+comment4.text=\r\n\ Returns\ true\ iff\ the\ sum\ of\ the\ marks\ is\ legal,\ \r\n\ i.e.\ no\ more\ than\ total.\ \r\n
+comment5.params=
+comment5.target=boolean\ anyNegativeMarks()
+comment5.text=\r\n\ Returns\ true\ iff\ there\ are\ negative\ marks.\ \r\n
+comment6.params=noOfCandidates
+comment6.target=boolean\ isFormal(int)
+comment6.text=\r\n\ Returns\ true\ iff\ the\ paper\ is\ formal.\ \r\n\ It\ must\ be\ the\ right\ length\ with\ no\ negative\ marks\ and\ a\ legal\ total.\ \r\n
+comment7.params=cs
+comment7.target=void\ updateVoteCounts(java.util.ArrayList)
+comment7.text=\r\n\ Adds\ the\ appropriate\ number\ of\ votes\ to\ each\ candidate.\r\n\ The\ kth\ number\ goes\ to\ the\ kth\ candidate.\r\n
+comment8.params=
+comment8.target=java.util.ArrayList\ highestVote()
+comment8.text=\r\n\ Returns\ the\ indices\ in\ marks\ which\ have\ the\ highest\ number.\r\n\ e.g.\ if\ marks\ \=\ <4,4,1,5,2>,\ it\ returns\ <3>\ (because\ the\ highest\ number\ is\ at\ index\ 3).\r\n\ e.g.\ if\ marks\ \=\ <5,4,1,2,5>,\ it\ returns\ <0,4>.\r\n\ e.g.\ if\ marks\ \=\ <1,1,1,1,1>,\ it\ returns\ <0,1,2,3,4>.\r\n
+comment9.params=cs
+comment9.target=void\ updateWinCounts(java.util.ArrayList)
+comment9.text=\r\n\ Adds\ the\ appropriate\ number\ of\ wins\ to\ each\ candidate.\r\n\ If\ there\ are\ n\ equal-highest\ numbers,\ each\ of\ those\ \r\n\ candidates\ receives\ 1/n\ wins.\ \r\n
+numComments=10

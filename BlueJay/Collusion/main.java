@@ -17,6 +17,7 @@ public class main
     {
         // initialise instance variables
         x = 0;
+        x = 1;
     }
 
     /**

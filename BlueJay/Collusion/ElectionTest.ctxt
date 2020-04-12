@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=ElectionTest
+comment0.text=\r\n\ This\ class\ provides\ unit\ test\ cases\ for\ the\ Election\ class.\r\n\ @author\ Lyndon\ While\r\n\ @version\ 1.0\r\n
+comment1.params=
+comment1.target=void\ setUp()
+comment1.text=\r\n\ Sets\ up\ the\ test\ fixture.\r\n\r\n\ Called\ before\ every\ test\ case\ method.\r\n
+comment2.params=
+comment2.target=void\ testElection()
+comment3.params=
+comment3.target=void\ testprocessFile()
+comment4.params=
+comment4.target=void\ testconductCount()
+comment5.params=
+comment5.target=void\ testgetStandings()
+comment6.params=
+comment6.target=void\ testwinner()
+numComments=7

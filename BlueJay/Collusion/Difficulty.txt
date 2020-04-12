@@ -1,0 +1,33 @@
+Vote 
+1  trivial accessor 
+2  simple equality 
+3  loop easy 
+4  loop search & return 
+5  conjunction easy 
+19 loop tricky 
+20 loop hard 
+21 loop tricky 
+Candidate 
+6  trivial constructor 
+7  trivial accessor 
+8  trivial accessor 
+9  trivial accessor 
+10 trivial mutator 
+11 trivial mutator 
+12 simple String 
+Election 
+13 easy constructor 
+14 trivial accessor 
+15 trivial accessor 
+16 easy accessor 
+17 double loop tricky 
+18 loop String 
+22 loop tricky 
+--- 23 loop tricky? 
+--- 24 loop tricky? 
+
+trivial 1116 - 9
+simple 11 - 2
+easy 111111 - 6
+tricky 1111 - 4
+hard 1 - 1
