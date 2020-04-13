@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"<Unnamed>","l":"Candidate"},{"p":"<Unnamed>","l":"CandidateTest"},{"p":"<Unnamed>","l":"Election"},{"p":"<Unnamed>","l":"ElectionTest"},{"p":"<Unnamed>","l":"FileIO"},{"p":"<Unnamed>","l":"main"},{"p":"<Unnamed>","l":"VotingPaper"},{"p":"<Unnamed>","l":"VotingPaperTest"}]
