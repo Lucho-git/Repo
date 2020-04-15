@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Grids</title>
+    <style>
+
+        .website{
+            display:grid;
+            grid-template-columns:1fr 5fr 1fr;
+            grid-auto-rows:minmax(100px, auto);
+            grid-gap:1em;
+          /*  justify-items:stretch;
+            align-items:stretch;*/
+        }
+
+        .website > div{
+            background:#eeee;
+           /** padding:1em;*/
+            border:#990 1px solid;
+
+         }
+         .website > div:nth-child(odd){
+            background:#ddd;
+         }
+
+        .flexheader{
+            display:flex;
+           /* justify-content:stretch;
+            align-content:stretch;*/
+            grid-column:1/4;
+            grid-row: 1;
+        }
+
+        .flexheader >div{
+            display:flex;
+
+
+        }
+        
+
+        .lsidebar{
+            grid-column:1;
+            grid-row: 2/4;
+        }
+
+        .main{
+            grid-column:2;
+            grid-row:2;
+         }
+
+        .rsidebar{
+            grid-column:3;
+            grid-row: 2/4;
+        }
+
+        .footer{
+            grid-column:2;
+            grid-row: 3;
+        }
+
+
+        .box{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            border:2px solid black;
+        }
+            
+
+        .logo {
+            flex:1;
+            border:#333 1px solid;
+            /*place-self: center center; */
+        }
+
+        .title1 {
+            flex:1;
+            border:#333 1px solid;
+           /* place-self: center center;  */            
+        }
+
+        .title2 {
+            flex:1;
+            border:#333 1px solid;
+           /* place-self: center center;  */
+        }
+
+        .title3 {
+            flex:1;
+            border:#333 1px solid;
+           /* place-self: center center;  */            
+        }
+
+        .searchbar{
+            flex:1;
+            border:#333 1px solid;
+           /* place-self: center center;  */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="website">
+        <div class="flexheader">
+            <div class="box logo">LOGO</div>
+            <div class="box title1">Title2Filler</div>
+            <div class="box title2">Title3Filler</div>
+            <div class="box title3">Title4Filler</div>
+            <div class="box searchbar">SearchBar[------------------]</div>
+        </div>
+
+        <div class="box lsidebar">LSIDE</div>
+        <div class="box main">MAIN</div>
+        <div class="box rsidebar">RSIDE</div>
+        <div class="box footer">FOOT</div>
+    </div>
+</body>
+
+
+</html>

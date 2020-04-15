@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Grids</title>
+    <style>
+
+        .wrapper{
+            display:grid;
+            /*grid-template-columns: 1fr 2fr 1fr;   */
+            grid-template-columns:repeat(3, 1fr);
+            grid-gap:1em;
+            /*fixed height*/
+            grid-auto-rows:100px;
+            grid-auto-rows: minmax(150px, auto);
+        }
+
+
+        .nested{
+            display:grid;
+            grid-template-columns:repeat(3, 1fr);
+            grid-auto-rows: 80px;
+            grid-gap:1em;
+        }
+
+        .wrapper > div{
+            background:#eeee;
+            padding:1em;
+         }
+         .wrapper > div:nth-child(odd){
+            background:#ddd;
+         }
+
+        .nested > div{
+            border:#333 1px solid;
+            place-self: center;
+            padding:1em;
+        }
+        
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div>
+            Lorum IPSEN DSKLDF. Lorum IPSEN DSKLDF.Lorum IPSEN DSKLDF.Lorum IPSEN DSKLDF.Lorum IPSEN DSKLDF.Lorum IPSEN DSKLDF.Lorum SKLDF.Lorum IPSEN DSKLDF.Lorum IPSEN DSKLDF.Lorum IPSEN DSKLDF.Lorum IPSEN DSKLDF.Lorum IPSEN DSKLDF.LoruDSKLDF.Lorum IPSEN DSKLDF.Lorum IPSEN DSKLDF.Lorum IPSEN DSKLDF.
+        </div>
+        <div class="nested">
+            <div>Lorem</div>
+            <div>Lorem</div>
+            <div>Lorem</div>
+            <div>Lorem</div>
+            <div>Lorem</div>
+            <div>Lorem</div>
+            <div>Lorem</div>
+            <div>Lorem</div>
+            <div>Lorem</div>
+        </div>
+        <div>
+            Lorum IPSEN DSKLDF.
+        </div>
+        <div>
+            Lorum IPSEN DSKLDF.
+        </div>
+        <div>
+            Lorum IPSEN DSKLDF.
+        </div>
+        <div>
+            Lorum IPSEN DSKLDF.
+        </div>
+    </div>
+
+</body>
+
+
+</html>

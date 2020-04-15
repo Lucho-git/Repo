@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Grids</title>
+    <style>
+
+        .header{
+            display:grid;
+            grid-template-columns: repeat(5,1fr);
+        }
+
+        .header > div{
+            background:#eeee;
+            padding:1em;
+            border:#990 1px solid;
+
+         }
+         .header > div:nth-child(odd){
+            background:#ddd;
+         }
+
+
+        .box{
+            display:flex;
+         /*   place-self: center;*/
+            justify-content:center;
+            border:2px solid black;
+        }
+            
+
+
+        .logo {
+            border:#333 1px solid;
+           /* place-self: center stretch; */
+        }
+
+        .title1 {
+            border:#333 1px solid;
+           /* place-self: center center;  */            
+        }
+
+        .title2 {
+            border:#333 1px solid;
+           /* place-self: center center;  */
+        }
+
+        .title3 {
+            border:#333 1px solid;
+           /* place-self: center center;  */            
+        }
+
+        .searchbar{
+            border:#333 1px solid;
+           /* place-self: center center;  */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+     
+        <div class="box logo">Title1</div>
+        <div class="box title1">Title2Filler</div>
+        <div class="box title2">Title3Filler</div>
+        <div class="box title3">Title4Filler</div>
+        <div class="box searchbar">SearchBar[------]</div>
+    </div>
+</body>
+
+
+</html>
