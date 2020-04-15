@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Grids</title>
+    <style>
+
+        .wrapper{
+            display:grid;
+            grid-template-columns: 30% 30% 40%;
+            grid-column-gap:1em;
+            grid-row-gap:1em;
+        }
+
+        .wrapper > div{
+            background:#eeee;
+            padding:1em;
+         }
+         .wrapper > div:nth-child(odd){
+            background:#ddd;
+         }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div>
+            RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT
+        </div>
+        <div>
+            RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT
+        </div>
+        <div>
+            RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT
+        </div>
+        <div>
+            RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT RANDOM WORDS THAT
+        </div>
+    </div>
+</body>
+
+
+</html>
