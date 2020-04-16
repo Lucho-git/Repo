@@ -31,6 +31,7 @@ body {
   color: white;
   text-decoration: none;
   border-right: 1px solid #34495e;
+  border-bottom: 1px solid #34495e;
   font-size: .9em;
 }
 #nav ul li a:hover {
@@ -124,17 +125,22 @@ body {
     width: 12.5em;
     z-index: 200;
   }
+    
   #nav ul li ul li {
-    text-align: left;
+    text-align: right;
   }
+
+
   #nav ul li ul li ul {
     z-index: 300;
     top: 0px;
     left: 12.4em;
   }
+
   #nav ul li ul li ul li a {
     padding-left: 30px !important;
   }
+
   #nav ul li:hover > ul {
     display: block !important;
   }
