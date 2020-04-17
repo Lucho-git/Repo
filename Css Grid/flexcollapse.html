@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <title></title>
+    <style>
+
+        .flexheader{
+            display:flex;
+            background:#FFFF00;
+        }
+
+        .title{
+            border:#999 .2px solid;
+            flex:5;
+        }
+
+        .collapsingtitle{
+            border:#999 .2px solid;
+            flex:2;
+            
+        }
+
+        @media only screen and (max-width: 1300px) {
+            .collapsingtitle {
+                display:none;
+                opacity:0.5;
+
+            }
+
+    </style>
+</head>
+
+
+
+<body>
+
+    <div class="flexheader">
+
+        <div class="title">Titletext:sdakljksdfla</div>
+        <div class="collapsingtitle">text that i want to go away</div>
+        <div class "title">Moretext:ksaldfjksdlfjkasdlf</div>
+
+    </div>
+
+
+</body>
+
+</html>

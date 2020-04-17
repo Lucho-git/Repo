@@ -5,7 +5,7 @@
 
 
 <head>
-    <title>CSS Grids</title>
+
     <style>
 
 
@@ -14,17 +14,6 @@
             display:grid;
             grid-template-columns:1fr 9fr 1fr;
             grid-template-rows:70px 1000px 200px;
-        }
-
-
-        @for $i from 1 through 400 {
-	        $red: random(255);
-	        $green: random(255);
-	        $blue: random(255);
-	
-	        website div:nth-child(#{$i}){
-		        background: rgb($red, $green, $blue);
-	        }
         }
 
 
@@ -41,35 +30,8 @@
 
 
 
-
-
-
-/*
-        .website > div{
-            background:#eeee;
-            border:#300 1px solid;
-            @media screen and (max-width: 960px) and (min-width: 500px) {
-                border:#390 2px solid;
-            }
-         }
-*/
-
-
-/*
-         .website > div:nth-child(odd){
-            background:#FF0000;
-         }
-*/
-/*
-         .website > div:nth-child(odd){
-            background:#FF0000;
-         }
-*/
-
         .flexheader{
             display:flex;
-           /* justify-content:stretch;
-            align-content:stretch;*/
             grid-column:1/4;
             grid-row: 1;
             a{
@@ -79,10 +41,11 @@
                 text-align:center;
             }
         }
-        
+
 
         .flexheader >div{
             display:flex;
+            background:#fff;
             background-image: linear-gradient(to bottom right, #140c20, #291518);
         }
 
@@ -117,7 +80,6 @@
             display:flex;
             justify-content:center;
             align-items:center;
-            text-align: center;
             border:#352e42 .8px solid;
             border-bottom:#352e42 2px solid;
         }
@@ -138,13 +100,6 @@
         .navlink:hover {
             background:#201c29;
             transform: scale(1.07);
-
-
-/*
-            background:#201c29;
-            background:#352e42;
-            transform: scale(1.07);
-*/
         }
             
 
@@ -154,9 +109,32 @@
             align-items:center;
         }
 
-        .logo {
-            flex:7;
+
+        .animate{
+            position:absolute;
+            left: 23.2px;
+            background:#140c20;
+            opacity:1;
         }
+
+        .logo {
+            flex:1;
+            justify-content:left;
+            align-items:left;
+            width: max-content; 
+            white-space: nowrap;
+            font-size: 1.4em;
+
+            .static{
+                background:#fff;
+                left:100px;
+            }
+        }
+
+        .logo:hover .animate{
+                opacity:0;
+        }
+
 
 
         .title1 {
@@ -177,27 +155,62 @@
 
         .title5 {
             flex:3;
+            display:none;
         }
 
         .searchbar{
-            flex:8;
+            flex:6;
+            display:none;
         }
+
+        @media only screen and (max-width: 1300px) {
+            .searchbar {
+                display:none !important;
+            }
+
+            .title2 {
+                display:none;
+            }
+
+            .title3 {
+                display:none;
+            }
+
+            .title4 {
+                display:none;
+            }
+
+            .title5 {
+                display:none;
+            }
+
+        }
+/*                
+        .searchbar:hover{ display:none;}
+*/
+
+
+
 
     </style>
 </head>
 
 
+
 <body>
     <div class="website">
         <div class="flexheader">
-            <a href="#">
-                <div class="nav logo"><img src="img/highres.png" height="60" width="60"><a href="#" class="fill-div">Lachlan Ross</a></div>
-            </a>
-                <div class="nav navlink title1"><a href="#" class="fill-div">Articles</a></div>
-                <div class="nav navlink title2"><a href="#" class="fill-div">Almanac</a></div>
-                <div class="nav navlink title3"><a href="#" class="fill-div">Videos</a></div>
-                <div class="nav navlink title4"><a href="#" class="fill-div">Newsletters</a></div>
-                <div class="nav searchbar">SearchBar[------------------]</div>
+
+            <div 
+            class="nav logo" onclick="location.href='#'; "style="cursor: pointer;">&nbsp;&nbsp;&nbsp;<img class="animate" src="https://i.imgur.com/3owccbf.png" height="45" width="45"> <img class="static" src="https://i.imgur.com/7YYmK5t.gif" height="45" width="45">&nbsp;Lachlan Ross&nbsp;&nbsp; &nbsp;&nbsp;
+            </div>
+           
+            <div class="nav navlink title1"><a href="#" class="fill-div">Articles</a></div>
+            <div class="nav navlink title2"><a href="#" class="fill-div">Almanac</a></div>
+            <div class="nav navlink title3"><a href="#" class="fill-div">Videos</a></div>
+            <div class="nav navlink title4"><a href="#" class="fill-div">Newsletters</a></div>
+            <div class="nav navlink title5"><a href="#" class="fill-div">Guides</a></div>
+            <div class="nav searchbar"  onclick="location.href='#';" style="cursor: pointer;" >[____________________________]🔍</div>
 
         </div>
 
