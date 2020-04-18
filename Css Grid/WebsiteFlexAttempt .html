@@ -13,7 +13,7 @@
         .website{
             display:grid;
             grid-template-columns:1fr 9fr 1fr;
-            grid-template-rows:70px 1000px 200px;
+            grid-template-rows:70px 4000px 200px;
         }
 
 
@@ -65,12 +65,13 @@
 
         .rsidebar{
       
-            background-image: linear-gradient(to bottom left  , #433a4d, #291518);
+            background-image: linear-gradient(to bottom left, #433a4d, #291518);
             grid-column:3;
             grid-row: 2/4;
         }
 
         .footer{
+            background-image: linear-gradient(to bottom right, #232224, #291518);
             grid-column:2;
             grid-row: 3;
         }
@@ -107,6 +108,12 @@
             display:flex;
             justify-content:center;
             align-items:center;
+        }
+
+
+        img{
+            height:45px;
+            width: 45px;
         }
 
 
@@ -163,32 +170,66 @@
             display:none;
         }
 
+
+
+
         @media only screen and (max-width: 1300px) {
+
+            .website{
+                grid-template-rows:65px 1000px 200px;
+            }
+
             .searchbar {
+                display:none !important;
+            }
+            .logo{
+                font-size:1.0em;
+            }
+
+            img{
+                height:35px;
+                width:35px;
+            }
+
+
+            .animate{
+                position:absolute;
+                left: 16.8px;
+                background:#140c20;
+                opacity:1;
+            }
+
+
+        }
+
+
+        @media only screen and (max-width:800px) {
+
+            .website{
+                grid-template-rows:55px 1000px 200px;
+            }
+
+            .title1 {
                 display:none !important;
             }
 
             .title2 {
-                display:none;
+                display:none !important;
             }
 
             .title3 {
-                display:none;
+                display:none !important;
             }
 
             .title4 {
-                display:none;
+                display:none !important;
             }
 
             .title5 {
-                display:none;
+                display:none !important;
             }
 
         }
-/*                
-        .searchbar:hover{ display:none;}
-*/
-
 
 
 
@@ -202,7 +243,7 @@
         <div class="flexheader">
 
             <div 
-            class="nav logo" onclick="location.href='#'; "style="cursor: pointer;">&nbsp;&nbsp;&nbsp;<img class="animate" src="https://i.imgur.com/3owccbf.png" height="45" width="45"> <img class="static" src="https://i.imgur.com/7YYmK5t.gif" height="45" width="45">&nbsp;Lachlan Ross&nbsp;&nbsp; &nbsp;&nbsp;
+            class="nav logo" onclick="location.href='#'; "style="cursor: pointer;">&nbsp;&nbsp;&nbsp;<img class="animate" src="https://i.imgur.com/3owccbf.png"> <img class="static" src="https://i.imgur.com/7YYmK5t.gif">&nbsp;&nbsp;Lachlan Ross&nbsp;&nbsp; &nbsp;&nbsp;
             </div>
            
             <div class="nav navlink title1"><a href="#" class="fill-div">Articles</a></div>
@@ -210,14 +251,14 @@
             <div class="nav navlink title3"><a href="#" class="fill-div">Videos</a></div>
             <div class="nav navlink title4"><a href="#" class="fill-div">Newsletters</a></div>
             <div class="nav navlink title5"><a href="#" class="fill-div">Guides</a></div>
-            <div class="nav searchbar"  onclick="location.href='#';" style="cursor: pointer;" >[____________________________]🔍</div>
+            <div class="nav searchbar"  onclick="location.href='#';" style="cursor: pointer;" >[__________________________]   🔍</div>
 
         </div>
 
         <div class="box lsidebar"></div>
-        <div class="box main">MAIN</div>
+        <div class="box main"></div>
         <div class="box rsidebar"></div>
-        <div class="box footer">FOOT</div>
+        <div class="box footer"></div>
     </div>
 
 
