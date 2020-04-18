@@ -8,6 +8,34 @@
     <title></title>
     <style>
 
+
+
+body::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar
+{
+	width: 1vn;
+	background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+}
+
+
+        .website
+            {
+            display:grid;
+            grid-template-columns:1fr;
+            grid-template-rows:10000px;
+            min-height:100%;
+        }
+
         .flexheader{
             display:flex;
             background:#FFFF00;
@@ -37,13 +65,15 @@
 
 
 <body>
+    <div class="website">
+        <div class="flexheader">
 
-    <div class="flexheader">
+            <div class="title">Titletext:sdakljksdfla</div>
+            <div class="collapsingtitle">text that i want to go away</div>
+            <div class "title">Moretext:ksaldfjksdlfjkasdlf</div>
 
-        <div class="title">Titletext:sdakljksdfla</div>
-        <div class="collapsingtitle">text that i want to go away</div>
-        <div class "title">Moretext:ksaldfjksdlfjkasdlf</div>
-
+        </div>
+        <div> LOTS OF TEXT</div>11
     </div>
 
 
