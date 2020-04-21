@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+
+.website
+    {
+    display:grid;
+    grid-template-columns:1fr 9fr 1fr;
+    grid-template-rows:300px 1fr 100px;
+    min-height:100%;
+}
+
+.flexheader{
+    display:flex;
+    flex-wrap:wrap;
+    grid-column:1/4;
+    grid-row: 1;
+    background:#140c20;
+}
+
+.flexheader2{
+    margin-top:140px;
+    display:flex;
+    flex-direction:column;
+    grid-column:1/4;
+    grid-row: 1;
+    background:rgba(21, 73, 4, 0.8);
+}
+
+.flexitem{
+    flex:1;
+    min-height: 50px;
+    min-width: 700px;
+    border:1px yellow solid;
+}
+
+.flexitem2{
+    flex:1;
+    min-height: 50px;
+    min-width:100%;
+    border:1px rgb(140, 0, 255) solid;
+
+}
+
+.search{
+    padding:0 1rem;
+    -webkit-box-flex:1;
+    flex:1;
+    display:grid;
+    place-items:center
+}
+
+.search{
+    opacity:0;
+    visibility:hidden;
+    position:absolute;
+    left:0;top:100%;
+    background:#000;
+    width:100%;
+    padding:1rem!important
+}
+
+.search.open{
+    opacity:1;
+    visibility: visible;
+    z-index:2
+}
+
+
+.lsidebar{
+    background:#232224;
+    grid-column:1;
+    grid-row: 2/4;
+}
+
+
+.main{
+    grid-column:2;
+    grid-row:2;
+    background:red;
+    min-height: 100px;
+}
+
+.rsidebar{
+
+background:#232224;
+grid-column:3;
+grid-row: 2/4;
+}
+
+.footer{
+background:#33465b;
+grid-column:2;
+grid-row: 3;
+}
+
+        </style>
+
+    </head>
+    <body>
+
+        <div class="website">
+            <div class="flexheader">
+                <div class="flexitem">
+                
+                </div>
+                <div class="flexitem">
+                
+                </div>
+                <div class="flexitem">
+                
+                </div>
+            </div>
+
+            <div class="flexheader2">
+                <div class="flexitem2">
+                
+                </div>
+                <div class="flexitem2">
+                
+                </div>
+                <div class="flexitem2">
+                
+                </div>
+            </div>
+
+
+            <div class="lsidebar"></div>
+            <div class="main"></div>
+            <div class="rsidebar"></div>
+            <div class="footer"></div>
+
+
+        </div>
+        
+
+        <script src=></script>
+    </body>
+</html>

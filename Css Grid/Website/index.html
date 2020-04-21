@@ -43,25 +43,49 @@
                 <div class="nav navlink title3"><a href="#" class="fill-div">Resume</a></div>
                 <div class="nav navlink title4"><a href="#" class="fill-div"> Experiments </a></div>
                 <div class="nav navlink title5"><a href="#" class="fill-div">Contact Info</a></div>
-                <div class="nav searchbar"  onclick="location.href='#';" style="cursor: pointer;" >🔍</div>
+                <div class="nav searchbar" id="searchbar1" onclick="location.href='#';" style="cursor: pointer;" >🔍</div>
             </span>
             <span class="xs-view">
                 <div class="nav filler"> </div>
-                <div class="nav searchbar"  onclick="location.href='#';" style="cursor: pointer;" > &nbsp;&nbsp;&nbsp;&nbsp;🔍&nbsp;&nbsp;&nbsp; </div>
+                <div class="nav searchbar" id= "searchbar2"  onclick="location.href='#';" style="cursor: pointer;" > &nbsp;&nbsp;&nbsp;&nbsp;🔍&nbsp;&nbsp;&nbsp; </div>
                 <div class="nav menu"  onclick="location.href='#';" style="cursor: pointer;" > &nbsp;&nbsp;&nbsp;☰&nbsp;&nbsp;&nbsp; </div>
 
             </span>
 
         </div>
 
-        <div class="box lsidebar"></div>
+        <div class="box lsidebar" id="lsidebar"></div>
         <div class="box main"></div>
-        <div class="box rsidebar"></div>
+        <div class="box rsidebar" id="rsidebar"></div>
         <div class="box footer"></div>
     </div>
 
 
+    <script>
+        
+        let searchbar = document.getElementById('searchbar');
+        let lsidebar = document.getElementById("lsidebar");
 
+        searchbar1.addEventListener('click', () => clicksearch(searchbar1))
+        searchbar2.addEventListener('click', () => clicksearch(searchbar2))
+
+
+        function clicksearch(inElement){
+            inElement.style.borderColor = 'white';
+            inElement.style.backgroundColor = 'red';
+        }
+  
+
+
+
+        
+        
+        lsidebar.addEventListener('click', () => lsidebar.style.backgroundImage = 'none')
+        lsidebar.addEventListener('click', () => lsidebar.style.backgroundColor = 'red')
+
+        console.log('hello world');
+        console.log(lsidebar);
+    </script>
 
 </body>
 

@@ -3,13 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        div{
+            display:flex;
+            justify-content:center;
+        }
+
+        button{
+            padding: 10px 20px;
+            margin: 5px;
+            background-color:black;
+            border:none;
+            outline:none;
+            border-radius: 5px;
+            color:white;
+        }
+    </style>
+
+
     <title>Document</title>
 </head>
 <body>
     <h1>hello wold</h1>
+    <div>
+        <button id="primary">primary</button>
+        <button id="success">success</button>
+        <button id="danger">danger</button>
+    </div>
 
 
+    <script>
+        let primary = document.getElementById("primary");
+        let success = document.getElementById("success");
+        let danger = document.getElementById("danger");
 
-    <script src="index.js">    </script>
+        primary.addEventListener('click', () => primary.style.backgroundColor = '#fff' )
+        success.addEventListener('click', () => success.style.backgroundColor = 'yellow')
+        danger.addEventListener('click', () => danger.style.backgroundColor = 'red')
+
+    </script>
 </body>
 </html>
