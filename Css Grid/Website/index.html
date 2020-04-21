@@ -100,17 +100,18 @@
         searchbar1.addEventListener('click', () => clicksearch(searchbar1))
         searchbar2.addEventListener('click', () => clicksearch(searchbar2))
 
-        menubtn.addEventListener('click', () => showmenu(responsivemenu))
+
+        menubtn.addEventListener('click', () => showmenu(responsivemenu,menubtn))
         
-        function showmenu(inElement){
+        function showmenu(inElement, inbtn){
             inElement.style.opacity = '1';
             inElement.style.visibility = 'visible';
+            inbtn.style.backgroundImage = 'linear-gradient(90deg,#ff0000,#7e465a)';
         }
 
 
         function clicksearch(inElement){
-            inElement.style.borderColor = 'white';
-            inElement.style.backgroundColor = 'red';
+            inElement.style.backgroundImage = 'linear-gradient(90deg,#ff0000,#7e465a)';
             console.log(responsivemenu);
         }
   
