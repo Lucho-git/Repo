@@ -66,15 +66,16 @@
     <!-- when open, main nav is switched to be visible-->
     .site-header .main-nav.open{opacity:1;visibility:visible}
     
-    .site-header .main-nav .mobile-other-nav,
-    <!-- maybe this is the social media links section-->
-    .site-header .main-nav .mobile-social{display:block}
+    <!-- displays a block for the mobile other  and   mobile social   sections-->
+    .site-header .main-nav .mobile-other-nav, .site-header .main-nav .mobile-social{display:block}
     
+    <!-- displays a block with padding for the main sections-->
     .site-header .main-nav .main-sections{display:block;padding:1rem 0;height:auto}
     
     <!-- maybe this is the links section which takes up the whole page-->
     .site-header .main-nav .main-sections>li>a{width:100%;border:0;font-size:1.2rem;padding:.25rem!important}
     
+    <!-- displays nothing before the links to the main section????-->
     .site-header .main-nav .main-sections>li>a:before{display:none}
     
     <!-- start of mobile-other-nav section, uses css grids to split this section in half-->
@@ -83,45 +84,89 @@
     
     .site-header .main-nav .mobile-other-nav>a{display:block;text-align:center;padding:.25rem;color:#c2c2c2}
     
+    <!-- this focus section makes sure that the colour changes for tabbing through the website as well-->
+        <!--unsure where about this colour, website seems to be showing orange for this, but pink is displayed with the hexcode ???-->
+
     .site-header .main-nav .mobile-other-nav>a:focus,
-    <!--unsure where this colour is being used, i thought it would be for hovering over a link but cannot find it ???-->
     .site-header .main-nav .mobile-other-nav>a:hover{color:#e52e71}
     
+    <!-- creates a 5 grid section to store link boxes at the bottom-->
     .site-header .main-nav .mobile-social{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #201c29;border-bottom:1px solid #201c29}
     
     <!-- centering all link within mobile-social social section and giving them borders-->
     .site-header .main-nav .mobile-social>a{display:grid;place-items:center center;border-left:1px solid #201c29;padding:2rem 0}
     
-    <!-- all icons are shaded from orange to pink-->
+    <!-- all icons are shaded from orange to pink for stylish icon look-->
     .site-header .main-nav .mobile-social>a>svg{width:20px;height:20px;fill:url(#orange-to-pink)}
-    
-    .site-header .main-nav .mobile-social>a:focus,
-    
-    .site-header .main-nav .mobile-social>a:hover{background:#201c29}
+   
     <!-- change backgrounds on hover-->
-    .site-header .mobile-nav-button{display:block}}.page-header-top-nav .search,
+    .site-header .main-nav .mobile-social>a:focus,
+    .site-header .main-nav .mobile-social>a:hover{background:#201c29}
+    <!-- mobil nav button??  being showed as a block-->
+
+    .site-header .mobile-nav-button{display:block}
+
+    }
     
-    .site-header .search{padding:0 1rem;-webkit-box-flex:1;flex:1;display:grid;place-items:center}.page-header-top-nav .search>*,
+    <!-- search bar expanding section-->
+    .page-header-top-nav .search,
     
-    .site-header .search>*{width:100%}.page-header-top-nav .search-form,
+    <!-- builds the search area, is a flex item but uses a grid for its children contents, centers the search bar within it, fits the entire screen witch and has padding for the edges-->
+    .site-header .search{padding:0 1rem;-webkit-box-flex:1;flex:1;display:grid;place-items:center}.page-header-top-nav .search>
+    <!-- not certain of *,  syntax, however i think it is there so search can call on any child of search-->
+    *,.site-header .search>*{width:100%}
     
-    .site-header .search-form{border-radius:28px;display:-webkit-box;display:flex;border:2px solid #312d3c}.page-header-top-nav .search-form input[type=search],
+    <!-- i am fairly sure page-header is stored in a seperate css doc or something like that and it is retriveing .search-form functionalitys-->
+    .page-header-top-nav .search-form,
     
-    .site-header .search-form input[type=search]{background:#201c29;border:0;min-width:0;-webkit-box-flex:1;flex:1;color:#fff;padding:.5rem 1rem;border-top-left-radius:27px;border-bottom-left-radius:27px;border-top-right-radius:0;border-bottom-right-radius:0;-webkit-appearance:unset}.page-header-top-nav .search-form:focus-within,
+    .site-header .search-form{border-radius:28px;display:-webkit-box;display:flex;border:2px solid #312d3c}
+    .page-header-top-nav .search-form input[type=search],
     
-    .site-header .search-form:focus-within{border-color:#fff}.page-header-top-nav .button-search,
+    <!-- styling the search bar to look fresh and cool-->
+    .site-header .search-form input[type=search]{background:#201c29;border:0;min-width:0;-webkit-box-flex:1;flex:1;color:#fff;padding:.5rem 1rem;border-top-left-radius:27px;border-bottom-left-radius:27px;border-top-right-radius:0;border-bottom-right-radius:0;-webkit-appearance:unset}
+    .page-header-top-nav .search-form:focus-within,
     
+    <!-- border color is white while in focus-->
+    .site-header .search-form:focus-within{border-color:#fff}
+    
+    <!-- more styling to make it look cool-->
+    .page-header-top-nav .button-search,
     .site-header .button-search{border:0;border-top-right-radius:27px;border-bottom-right-radius:27px;border-top-left-radius:8px;border-bottom-left-radius:8px;background-image:-webkit-gradient(linear,left top,right top,from(#ff8a00),to(#e52e71));background-image:linear-gradient(90deg,#ff8a00,#e52e71);padding:0 22px 0 18px}.page-header-top-nav .icon-search,
+
+    <!-- switches the search icon to a cross icon-->
+    .site-header .icon-search{fill:#fff}.page-header-top-nav .icon-search-close, .site-header .icon-search-close{fill:#fff;display:none}
     
-    .site-header .icon-search{fill:#fff}.page-header-top-nav .icon-search-close,
+    .site-header .search{-webkit-box-flex:0;flex:0 0 400px}
     
-    .site-header .icon-search-close{fill:#fff;display:none}
+    <!-- dispalysnothing which in icon search mode-->
+    .search-is-open .icon-search{display:none}
     
-    .site-header .search{-webkit-box-flex:0;flex:0 0 400px}.search-is-open .icon-search{display:none}.search-is-open .icon-search-close{display:block}.sidebar .csw-widget
+    <!-- displays cross as block when in icon search close mode-->
+    .search-is-open .icon-search-close{display:block}
+    
 
 
 
 
+    <!-- sidebar and footer section-->
+    .sidebar .csw-widget
+
+    .csw-widget{margin:0 0 2rem}
+    
+    .sidebar .csw-widget #searchform,
+    
+    .sidebar .csw-widget .jetpack-search-filters-widget__sub-heading{display:none}
+    
+    .sidebar .csw-widget .jetpack-search-sort-wrapper{margin:0 0 1rem}
+    
+    .footer-jobs-header{margin-right:3rem;display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column}
+    
+    .footer-jobs-header p{color:#7a7a8c;font-size:16px;margin-bottom:1rem;margin-top:.5rem}
+    
+    .footer-jobs-header .button:first-of-type,.footer-jobs-header .commentPreviewButton:first-of-type{margin-top:auto}
+    
+    .footer-jobs-wrapper{background:#100e17;padding:2rem}
+    
 
 
 
