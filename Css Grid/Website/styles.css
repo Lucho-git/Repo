@@ -73,7 +73,10 @@ body::-webkit-scrollbar-thumb
 */
 
 
-
+.hideme{
+    visibility: hidden;
+    opacity: 0;
+}
 
 
 
@@ -257,7 +260,6 @@ input{
 
 
 
-
 .search{
     flex:5;
 
@@ -275,14 +277,6 @@ input{
     background-color: #262230;
 
 }
-
-
-.responsive-menu{
-    opacity:0;
-    visibility: hidden;
-}
-
-
 
 .menu{
     flex:0;
@@ -313,7 +307,7 @@ input{
     flex:1;
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1300px) and (min-width: 0px){
 
     .website{
         grid-template-rows:65px 1fr 100px;
@@ -344,12 +338,13 @@ input{
 
     }
 
-    /*
-    .responsive-menu{
+    
+    .responsive-menu>a{
+        color:yellow;
         opacity:0;
         visibility: hidden;
     }
-    */
+    
 
 
     .title5{
@@ -377,7 +372,7 @@ input{
 }
 
 
-@media only screen and (max-width:800px) {
+@media only screen and (max-width:800px) and (min-width:0px){
 
     .website{
         grid-template-rows:55px 1fr 100px;
@@ -414,8 +409,6 @@ input{
     .responsive-menu
     {
         overflow:auto;
-        opacity:0;
-        visibility: hidden;
         z-index:1;
         transition:.2s;
         position:absolute;

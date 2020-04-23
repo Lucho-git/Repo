@@ -51,8 +51,8 @@
 
 
                 </div>
-                <div class="nav searchbar" id= "searchbar2"  onclick="location.href='#';" style="cursor: pointer;" > &nbsp;&nbsp;&nbsp;&nbsp;🔍&nbsp;&nbsp;&nbsp; </div>
-                <div class="nav menu" id="menubtn" onclick="location.href='#';" style="cursor: pointer;" > &nbsp;&nbsp;&nbsp;☰&nbsp;&nbsp;&nbsp; </div>
+                <div class="nav searchbar" id= "searchbar2"  onclick="location.href='#';" style="cursor: pointer;" > 🔍 </div>
+                <div class="nav menu" id="menubtn" onclick="location.href='#';" style="cursor: pointer;" > ☰ </div>
 
             </span>
 
@@ -65,7 +65,7 @@
 
         <div class="belowheader">
 
-            <nav class="responsive-menu" id="responsivemenu">
+            <nav class="responsive-menu hideme" id="responsivemenu">
                 <ul class = "headerlinks">
                     <li class= ''>
                         <a href ="#">Projects</a>
@@ -104,9 +104,25 @@
         menubtn.addEventListener('click', () => showmenu(responsivemenu,menubtn))
         
         function showmenu(inElement, inbtn){
-            inElement.style.opacity = '1';
-            inElement.style.visibility = 'visible';
-            inbtn.style.backgroundImage = 'linear-gradient(90deg,#ff0000,#7e465a)';
+            console.log(inElement.classList.contains('hideme'));   
+            if(inElement.classList.contains('hideme'))
+            {
+                inElement.classList.remove('hideme');
+                inElement.style.opacity = '1';
+                inElement.style.visibility = 'visible';
+                inbtn.style.backgroundImage = 'linear-gradient(90deg,#ff0000,#7e465a)';
+                inbtn.textContent = '×';
+                inbtn.style.fontSize = '150%';
+            }
+            else
+            {
+                inElement.classList.add('hideme');
+                inElement.style.opacity = '0';
+                inElement.style.visibility = 'hidden';
+                inbtn.style.backgroundImage = 'none';
+                inbtn.textContent = '☰';
+                inbtn.style.fontSize = '';
+            }
         }
 
 
