@@ -93,18 +93,16 @@
     <script>
         
         let searchbar = document.getElementById('searchbar');
-        let lsidebar = document.getElementById("lsidebar");
         let responsivemenu = document.getElementById("responsivemenu");
         let menubtn = document.getElementById("menubtn");
 
-        searchbar1.addEventListener('click', () => clicksearch(searchbar1))
-        searchbar2.addEventListener('click', () => clicksearch(searchbar2))
+        searchbar1.addEventListener('click', () => showsearch(searchbar,searchbar1))
+        searchbar2.addEventListener('click', () => showsearch(searchbar,searchbar2))
 
 
         menubtn.addEventListener('click', () => showmenu(responsivemenu,menubtn))
         
         function showmenu(inElement, inbtn){
-            console.log(inElement.classList.contains('hideme'));   
             if(inElement.classList.contains('hideme'))
             {
                 inElement.classList.remove('hideme');
@@ -112,7 +110,7 @@
                 inElement.style.visibility = 'visible';
                 inbtn.style.backgroundImage = 'linear-gradient(90deg,#ff0000,#7e465a)';
                 inbtn.textContent = '×';
-                inbtn.style.fontSize = '150%';
+                inbtn.style.fontSize = '180%';
             }
             else
             {
@@ -121,26 +119,29 @@
                 inElement.style.visibility = 'hidden';
                 inbtn.style.backgroundImage = 'none';
                 inbtn.textContent = '☰';
-                inbtn.style.fontSize = '';
             }
         }
 
-
-        function clicksearch(inElement){
-            inElement.style.backgroundImage = 'linear-gradient(90deg,#ff0000,#7e465a)';
-            console.log(responsivemenu);
+        function showsearch(inElement, searchbtn){
+            if(inElement.classList.contains('hideme'))
+            {
+                inElement.classList.remove('hideme');
+                inElement.style.opacity = '1';
+                inElement.style.visibility = 'visible';
+                searchbtn.style.backgroundImage = 'linear-gradient(90deg,#ff0000,#7e465a)';
+                searchbtn.textContent = '×';
+                inbtn.style.fontSize = '180%';
+            }
+            else
+            {
+                inElement.classList.add('hideme');
+                inElement.style.opacity = '0';
+                inElement.style.visibility = 'hidden';
+                inbtn.style.backgroundImage = 'none';
+                inbtn.textContent = '🔍';
+            }
         }
-  
 
-
-
-        
-        
-        lsidebar.addEventListener('click', () => lsidebar.style.backgroundImage = 'none')
-        lsidebar.addEventListener('click', () => lsidebar.style.backgroundColor = 'red')
-
-        console.log('hello world');
-        console.log(lsidebar);
     </script>
 
 </body>

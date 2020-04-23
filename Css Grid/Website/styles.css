@@ -279,7 +279,7 @@ input{
 }
 
 .menu{
-    flex:0;
+    flex:0 0 55px;
     
     border: #352e42 solid 1.5px;
     border-left:#352e42 solid .5px;
@@ -323,7 +323,7 @@ input{
     }
 
     .searchbar{
-        flex:0 0 70px;
+        flex:0 0 60px;
         border-top-left-radius:2rem;
         border-bottom-left-radius:2rem;
         border-left:solid 1.5px;
@@ -392,11 +392,11 @@ input{
     .logo{
         border: none;
     }
-
+/*
     .searchbar{
-        flex:0;
+        flex:0 0 60px;
     }
-
+*/
     .xs-view{
         display: flex;
     }
