@@ -15,10 +15,9 @@ body {
     padding: 0;
     color: #FFF;
     font-family: ARIAL;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 700;
     font-stretch: expanded;
-    /*font-size: 1.5vw;*/
 }
 
 html,body{
@@ -178,7 +177,7 @@ input{
 .animate{
     
     position:absolute;
-    left: 23.2px;
+    left: 10px;
         
 
     background:#140c20;
@@ -187,11 +186,14 @@ input{
 
 .logo {
     flex:0;
+    padding-left:10px;
+    padding-right:25px;
     justify-content:left;
     align-items:left;
     width: max-content; 
     white-space: nowrap;
-    font-size: 1.4em;
+    font-size: 1.6em;
+    color:lightblue;
 }
 
 .logo:hover .animate{
@@ -284,6 +286,7 @@ input{
     border: #352e42 solid 1.5px;
     border-left:#352e42 solid .5px;
     border-right:#352e42 solid .5px;
+    user-select: none;
 }
 
 .filler{
@@ -314,7 +317,7 @@ input{
     }
 
     .logo{
-        font-size:1.0em;
+        font-size:1.2em;
     }
 
     img{
@@ -331,6 +334,7 @@ input{
         border-bottom:solid 1.5px;
         border-right:solid .5px;
         border-color:#352e42;
+        user-select: none;
     }
 
     .searchbar:hover{
@@ -352,7 +356,7 @@ input{
     }
     .animate{
         position:absolute;
-        left: 16.8px;
+        left: 10px;
         background:#140c20;
         opacity:1;
     }
@@ -384,7 +388,7 @@ input{
 
     .animate{
         position:absolute;
-        left: 16px;
+        left: 10px;
         background:#140c20;
         opacity:1;
     }

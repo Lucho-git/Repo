@@ -19,7 +19,7 @@
         <div class="flexheader">
 
             <div 
-            class="nav logo" onclick="location.href='index.html'; "style="cursor: pointer;">&nbsp;&nbsp;&nbsp;<img class="animate" src="https://i.imgur.com/3owccbf.png"> <img class="static" src="https://i.imgur.com/7YYmK5t.gif">&nbsp;&nbsp;Lachlan Ross&nbsp;&nbsp;&nbsp;&nbsp;
+            class="nav logo" onclick="location.href='index.html'; "style="cursor: pointer;"><img class="animate" src="https://i.imgur.com/3owccbf.png"> <img class="static" src="https://i.imgur.com/7YYmK5t.gif">&nbsp;Lachlan Ross
             </div>
 
             <span class ="lg-view">
@@ -119,26 +119,33 @@
                 inElement.style.visibility = 'hidden';
                 inbtn.style.backgroundImage = 'none';
                 inbtn.textContent = '☰';
+                inbtn.style.fontSize = '100%';
+
             }
         }
 
         function showsearch(inElement, searchbtn){
-            if(inElement.classList.contains('hideme'))
+             if(searchbtn.classList.contains('opensearch'))
             {
-                inElement.classList.remove('hideme');
-                inElement.style.opacity = '1';
-                inElement.style.visibility = 'visible';
-                searchbtn.style.backgroundImage = 'linear-gradient(90deg,#ff0000,#7e465a)';
-                searchbtn.textContent = '×';
-                inbtn.style.fontSize = '180%';
+                searchbtn.classList.remove('opensearch');
+                /*
+                inElement.style.opacity = '0';
+                inElement.style.visibility = 'hidden';
+                */
+                searchbtn.textContent = '🔍';
+                searchbtn.style.fontSize = '100%';
+
             }
             else
             {
-                inElement.classList.add('hideme');
-                inElement.style.opacity = '0';
-                inElement.style.visibility = 'hidden';
-                inbtn.style.backgroundImage = 'none';
-                inbtn.textContent = '🔍';
+                searchbtn.classList.add('opensearch');
+                /*
+                inElement.style.opacity = '1';
+                inElement.style.visibility = 'visible';
+                */
+                searchbtn.textContent = '×';
+                searchbtn.style.fontSize = '180%';
+
             }
         }
 
