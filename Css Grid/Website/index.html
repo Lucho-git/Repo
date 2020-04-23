@@ -84,8 +84,19 @@
                     </li>
                 </ul>
                 <hr class="menubreak">
-            </nav>         
+            </nav>     
+            <div class ="searchbox hideme" id="searchbox">
+                <div class ="searchcontainer">
+                    <input type="text" placeholder="sup dawg" class ="search" style="cursor:text">
+                    <div class ="searchicon" style="cursor:pointer"> 🔍 </div>
+                </div>
+            </div>
         </div>
+            
+
+
+
+
 
     </div>
 
@@ -95,13 +106,24 @@
         let searchbar = document.getElementById('searchbar');
         let responsivemenu = document.getElementById("responsivemenu");
         let menubtn = document.getElementById("menubtn");
+        let searchbox = document.getElementById("searchbox");
+        let media = undefined;
+        let x = window.matchMedia("(max-width: 1300px)")
+        let y = window.matchMedia("(max-width: 800px)");
 
-        searchbar1.addEventListener('click', () => showsearch(searchbar,searchbar1))
-        searchbar2.addEventListener('click', () => showsearch(searchbar,searchbar2))
+        startingMedia(x)
+
+        x.addListener(myFunction) // Attach listener function on state changes
+        y.addListener(myFunction)
 
 
+        searchbar1.addEventListener('click', () => showsearch(searchbox,searchbar1))
+        searchbar2.addEventListener('click', () => showsearch(searchbox,searchbar2))
         menubtn.addEventListener('click', () => showmenu(responsivemenu,menubtn))
         
+
+
+
         function showmenu(inElement, inbtn){
             if(inElement.classList.contains('hideme'))
             {
@@ -128,10 +150,9 @@
              if(searchbtn.classList.contains('opensearch'))
             {
                 searchbtn.classList.remove('opensearch');
-                /*
+                inElement.classList.add('hideme');
                 inElement.style.opacity = '0';
                 inElement.style.visibility = 'hidden';
-                */
                 searchbtn.textContent = '🔍';
                 searchbtn.style.fontSize = '100%';
 
@@ -139,15 +160,67 @@
             else
             {
                 searchbtn.classList.add('opensearch');
-                /*
+                inElement.classList.remove('hideme');
                 inElement.style.opacity = '1';
                 inElement.style.visibility = 'visible';
-                */
                 searchbtn.textContent = '×';
                 searchbtn.style.fontSize = '180%';
 
             }
         }
+
+        function myFunction(x)
+        {
+
+            if(media == 0)
+            {
+                media = 1;
+                document.body.style.backgroundColor = "orange";
+            }
+            else if(media == 2)
+            {
+                media = 1;
+                document.body.style.backgroundColor = "orange";
+            }
+
+            else if(media == 1)
+            {
+                if(x.matches)
+                {
+                    media = 2;
+                    document.body.style.backgroundColor = "yellow";
+                }
+                else{
+                    media = 0;
+                    document.body.style.backgroundColor = "blue";
+                }
+            }  
+ 
+        }
+
+        function startingMedia(x)
+        {
+            if(!x.matches)
+            {
+                media = 0;
+            }
+            else if(x.matches)
+            {
+                x = window.matchMedia("(max-width: 800px)");
+                if(x.matches)
+                {
+                    media = 2;
+                }
+                else
+                {
+                    media = 1;
+                }
+            }
+            console.log(media);
+        }
+
+
+
 
     </script>
 

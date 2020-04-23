@@ -177,16 +177,16 @@ input{
 .animate{
     
     position:absolute;
-    left: 10px;
+    left: 16px;
         
 
-    background:#140c20;
+    background-image: linear-gradient(to bottom right, #140c1f, #1c0e1c );
     opacity:1;
 }
 
 .logo {
     flex:0;
-    padding-left:10px;
+    padding-left:15px;
     padding-right:25px;
     justify-content:left;
     align-items:left;
@@ -234,6 +234,7 @@ input{
     height:2.5rem;
 
     border: 1.5px solid #201c29;
+    border:hidden;
     border-top-right-radius:27px;
     border-bottom-right-radius:27px;
     border-top-left-radius:27px;
@@ -245,7 +246,7 @@ input{
 }
 
 .searchicon{
-    flex:1.2;
+    flex:0 0 60px;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -280,6 +281,16 @@ input{
 
 }
 
+.searchbox{
+    display:flex;
+    position:absolute;
+    z-index: 2;
+    width:100%;
+    background-image: linear-gradient(to bottom left, #291518, #140c20 );
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .menu{
     flex:0 0 55px;
     
@@ -287,6 +298,11 @@ input{
     border-left:#352e42 solid .5px;
     border-right:#352e42 solid .5px;
     user-select: none;
+}
+
+.responsive-menu
+{
+    position: absolute;
 }
 
 .filler{
@@ -325,6 +341,7 @@ input{
         width:35px;
     }
 
+
     .searchbar{
         flex:0 0 60px;
         border-top-left-radius:2rem;
@@ -342,11 +359,8 @@ input{
 
     }
 
-    
-    .responsive-menu>a{
-        color:yellow;
-        opacity:0;
-        visibility: hidden;
+    .searchbox{
+        border-top:1.3px solid #352e42;
     }
     
 
@@ -356,8 +370,8 @@ input{
     }
     .animate{
         position:absolute;
-        left: 10px;
-        background:#140c20;
+        left: 16px;
+        background-image: linear-gradient(to bottom right, #140c1f, #1c0e1c );
         opacity:1;
     }
 
@@ -376,7 +390,7 @@ input{
 }
 
 
-@media only screen and (max-width:800px) and (min-width:0px){
+@media only screen and (max-width:800px) {
 
     .website{
         grid-template-rows:55px 1fr 100px;
@@ -388,8 +402,8 @@ input{
 
     .animate{
         position:absolute;
-        left: 10px;
-        background:#140c20;
+        left: 15px;
+        background-image: linear-gradient(to bottom, #150c1f, 1e101b);
         opacity:1;
     }
 
@@ -409,6 +423,10 @@ input{
         display: none;
     }
 
+    .searchbox{
+        border-top:none;
+        border-bottom: 1px solid #352e42;
+    }
 
     .responsive-menu
     {
@@ -447,7 +465,7 @@ input{
     .headerlinks>li>a{
         display: flex;
         border:0;
-        font-size:1.2rem;
+        font-size:1.2rem;   
         
         padding-top:.5rem;
         padding-bottom: .5rem;
@@ -464,4 +482,15 @@ input{
 
     .headerlinks>li>a:hover,.headerlinks>li>a:focus{background:#201c29;}
 
+
+    
+}
+
+
+
+@media only screen and (min-width:800px) {
+    .responsive-menu{
+        visibility: hidden;
+        opacity: 0;
+    }
 }
