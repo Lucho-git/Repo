@@ -29,11 +29,9 @@
                 <div class="nav navlink title4"><a href="#" class="fill-div">Resume</a></div>
                 <div class="nav navlink title5"><a href="#" class="fill-div">Contact Info</a></div>
                 <div class="nav searchbar">
-                    <!--[______________________] 🔍
-                    onclick="location.href='#';" style="cursor: pointer;" -->
                     <div class ="searchcontainer">
-                        <input type="text" placeholder="sup dawg" class ="search" style="cursor:text">
-                        <div class ="searchicon" style="cursor:pointer"> 🔍 </div>
+                        <input type="text" placeholder="" class ="search" style="cursor:text">
+                        <div class ="searchicon" style="cursor:pointer"> 🔍&nbsp;  </div>
                     </div>
                 </div>
             </span>
@@ -45,6 +43,7 @@
                 <div class="nav navlink title5"><a href="#" class="fill-div">Contact Info</a></div>
                 <div class="nav searchbar" id="searchbar1" onclick="location.href='#';" style="cursor: pointer;" >🔍</div>
             </span>
+            
             <span class="xs-view">
                 <div class="nav filler">
                     
@@ -87,7 +86,7 @@
             </nav>     
             <div class ="searchbox hideme" id="searchbox">
                 <div class ="searchcontainer">
-                    <input type="text" placeholder="sup dawg" class ="search" style="cursor:text">
+                    <input type="text" placeholder="" class ="search" id="searchwrite" style="cursor:text">
                     <div class ="searchicon" style="cursor:pointer"> 🔍 </div>
                 </div>
             </div>
@@ -104,6 +103,7 @@
     <script>
         
         let searchbar = document.getElementById('searchbar');
+        let searchwrite = document.getElementById('searchwrite');
         let responsivemenu = document.getElementById("responsivemenu");
         let menubtn = document.getElementById("menubtn");
         let searchbox = document.getElementById("searchbox");
@@ -111,15 +111,20 @@
         let x = window.matchMedia("(max-width: 1300px)")
         let y = window.matchMedia("(max-width: 800px)");
 
+
+
+        searchbar1.addEventListener('click', () => showsearch(searchbox,searchbar1))
+        searchbar2.addEventListener('click', () => showsearch(searchbox,searchbar2))
+        menubtn.addEventListener('click', () => showmenu(responsivemenu,menubtn))
+
+
         startingMedia(x)
 
         x.addListener(myFunction) // Attach listener function on state changes
         y.addListener(myFunction)
 
 
-        searchbar1.addEventListener('click', () => showsearch(searchbox,searchbar1))
-        searchbar2.addEventListener('click', () => showsearch(searchbox,searchbar2))
-        menubtn.addEventListener('click', () => showmenu(responsivemenu,menubtn))
+
         
 
 
@@ -146,6 +151,32 @@
             }
         }
 
+        function hidesearch(inElement, searchbtn)
+        {
+            if(searchbtn.classList.contains('opensearch'))
+            {
+                searchbtn.classList.remove('opensearch');
+                inElement.classList.add('hideme');
+                inElement.style.opacity = '0';
+                inElement.style.visibility = 'hidden';
+                searchbtn.textContent = '🔍';
+                searchbtn.style.fontSize = '100%';
+            }   
+        }
+
+        function hidemenu (inElement, inbtn)
+        {
+            if(! inElement.classList.contains('hideme'))
+            {
+                inElement.classList.add('hideme');
+                inElement.style.opacity = '0';
+                inElement.style.visibility = 'hidden';
+                inbtn.style.backgroundImage = 'none';
+                inbtn.textContent = '☰';
+                inbtn.style.fontSize = '100%';
+            }
+        }
+
         function showsearch(inElement, searchbtn){
              if(searchbtn.classList.contains('opensearch'))
             {
@@ -155,7 +186,6 @@
                 inElement.style.visibility = 'hidden';
                 searchbtn.textContent = '🔍';
                 searchbtn.style.fontSize = '100%';
-
             }
             else
             {
@@ -163,9 +193,9 @@
                 inElement.classList.remove('hideme');
                 inElement.style.opacity = '1';
                 inElement.style.visibility = 'visible';
+                searchwrite.focus();
                 searchbtn.textContent = '×';
                 searchbtn.style.fontSize = '180%';
-
             }
         }
 
@@ -175,12 +205,12 @@
             if(media == 0)
             {
                 media = 1;
-                document.body.style.backgroundColor = "orange";
             }
             else if(media == 2)
             {
                 media = 1;
-                document.body.style.backgroundColor = "orange";
+                hidesearch(searchbox, searchbar2);
+                hidemenu(responsivemenu, menubtn);
             }
 
             else if(media == 1)
@@ -188,11 +218,12 @@
                 if(x.matches)
                 {
                     media = 2;
-                    document.body.style.backgroundColor = "yellow";
+                    hidesearch(searchbox, searchbar1);
+
                 }
                 else{
                     media = 0;
-                    document.body.style.backgroundColor = "blue";
+                    hidesearch(searchbox, searchbar1);
                 }
             }  
  
