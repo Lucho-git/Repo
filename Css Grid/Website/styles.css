@@ -107,8 +107,8 @@ body::-webkit-scrollbar-thumb
         0 0 100px 60px #f0f, 
         0 0 140px 90px #0ff; 
 */
-    justify-self:end;
-    align-self:end;
+    justify-self:center;
+    align-self:center;
 
  }
 
@@ -201,6 +201,22 @@ input{
 }
 
 
+
+
+.tom{
+    display:grid;
+    font-size:40px;
+    color:black;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.tom>img{
+    height:800px;
+    width:800px;
+}
 
 .title1 {
     flex:3;
