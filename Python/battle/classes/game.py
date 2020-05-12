@@ -40,7 +40,7 @@ class Person:
         return self.hp
 
     def get_max_hp(self):
-        return self.get_maxhp
+        return self.maxhp
 
     def get_mp(self):
         return self.mp
@@ -49,7 +49,7 @@ class Person:
         return self.maxmp
 
     def reduce_mp(self, cost):
-        self.maxmp -= cost
+        self.mp -= cost
 
     def get_spell_name(self, i):
         return self.mgc[i]["name"]
@@ -65,7 +65,7 @@ class Person:
             i += 1
 
 
-    def choose_magic(self):
+    def choose_mgc(self):
         i = 1
         print(bcolors.OKBLUE + bcolors.BOLD + "Magic" + bcolors.ENDC)
         for spell in self.mgc:
