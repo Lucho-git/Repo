@@ -11,7 +11,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 class Person:
-    def __init__(self, hp, mp, atk, df, mgc):
+    def __init__(self, hp, mp, atk, df, mgc, items):
         self.maxhp = hp
         self.hp = hp
         self.maxmp = mp
@@ -20,15 +20,16 @@ class Person:
         self.atkh = atk + 10
         self.df = df
         self.mgc = mgc
-        self.action = ["Attack", "Magic"]
+        self.items = items
+        self.action = ["Attack", "Magic", "Items"]
 
     def generate_damage(self):
         return random.randrange(self.atkl, self.atkh)
 
-    def generate_spell_damage(self, i):
-        mgl = self.mgc[i]["dmg"] - 5
-        mgh = self.mgc[i]["dmg"] + 5
-        return random.randrange(mgl, mgh)
+    def heal(self, dmg):
+        self.hp += dmg
+        if self.hp > self.maxhp:
+            self.hp = self.maxhp
 
     def take_damage(self, dmg):
         self.hp -= dmg
@@ -51,23 +52,24 @@ class Person:
     def reduce_mp(self, cost):
         self.mp -= cost
 
-    def get_spell_name(self, i):
-        return self.mgc[i]["name"]
-
-    def get_spell_mp_cost(self, i):
-        return self.mgc[i]["cost"]
-
     def choose_action(self):
         i = 1
-        print(bcolors.OKBLUE + bcolors.BOLD + "Actions" + bcolors.ENDC)
+        print(bcolors.OKBLUE + bcolors.BOLD + "ACTIONS" + bcolors.ENDC)
         for item in self.action:
-            print(str(i)  + ":", item)
+            print("    " +str(i)  + ":", item)
             i += 1
 
-
     def choose_mgc(self):
-        i = 1
-        print(bcolors.OKBLUE + bcolors.BOLD + "Magic" + bcolors.ENDC)
+        x = 1
+        print(bcolors.OKBLUE + bcolors.BOLD + "MAGIC" + bcolors.ENDC)
         for spell in self.mgc:
-            print(str(i) + ":", spell)
-            i+=1
+            print("    " +str(x) + ":", spell.name, "(cost:", str(spell.cost) + ")")
+            x+=1
+
+    def choose_item(self):
+        x = 1
+
+        print(bcolors.OKGREEN + bcolors.BOLD + "ITEMS:" + bcolors.ENDC)
+        for item in self.items:
+            print("    " +str(x) + ".", item.name, ":", item.description, " (x5)")
+            x += 1
