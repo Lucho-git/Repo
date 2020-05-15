@@ -74,14 +74,16 @@ while running:
                      dmg = player.generate_damage()
                      enemy = enemies[player.choose_target(enemies)]
                      enemy.take_damage(dmg)
-                     print(player.name, " attacked: " + enemy.name + " for", dmg,
-                           "points of damage. Enemy HP:", enemy.get_hp())
+                     print(player.name, " attacked: " + enemy.name.replace(" ", "") + " for", dmg,
+                           "points of damage.")
                      deathcheck = enemy.death(enemies)
                      if deathcheck != "":
-                            print("Enemy:", deathcheck, "has been killed by:", player.name)
+                            print("Enemy", deathcheck.replace(" ", "") , "has been killed by", player.name)
                             if len(enemies) == 0:
                                    print(bcolors.OKGREEN + "You Win!" + bcolors.ENDC)
                                    running = False
+                                   continue
+
 
               elif index == 1:
                      player.choose_mgc()
@@ -110,14 +112,16 @@ while running:
                             enemy = enemies[player.choose_target(enemies)]
                             enemy.take_damage(mgc_dmg)
                             print(bcolors.OKBLUE + "\n" + spell.name, "deals", str(mgc_dmg),
-                                  "points of damage to", enemy.name + bcolors.ENDC)
+                                  "points of damage to", enemy.name.replace(" ", "") + bcolors.ENDC)
 
                             deathcheck = enemy.death(enemies)
                             if deathcheck != "":
-                                   print("Enemy:", deathcheck, "has been killed by:", player.name)
+                                   print("Enemy", deathcheck.replace(" ", "") , "has been killed by", player.name)
                                    if len(enemies) == 0:
                                           print(bcolors.OKGREEN + "You Win!" + bcolors.ENDC)
                                           running = False
+                                          continue
+
 
 
               elif index == 2:
@@ -151,16 +155,18 @@ while running:
                             enemy = enemies[player.choose_target(enemies)]
                             enemy.take_damage(item.prop)
                             print(bcolors.FAIL + "\n", item.name, "deals", str(item.prop),
-                                  "points of damage to", enemy.name + bcolors.ENDC)
+                                  "points of damage to", enemy.name.replace(" ", "") + bcolors.ENDC)
                             deathcheck = enemy.death(enemies)
                             if deathcheck != "":
-                                   print("Enemy:", deathcheck, "has been killed by:", player.name)
+                                   print("Enemy", deathcheck.replace(" ", ""), "has been killed by", player.name)
                                    if len(enemies) == 0:
                                           print(bcolors.OKGREEN + "You Win!" + bcolors.ENDC)
                                           running = False
                                           continue
 
 
+       if not running:
+              continue
 
        enemy_choice = 1
        target = random.randrange(0, len(players))
@@ -168,20 +174,9 @@ while running:
        players[target].take_damage(enemy_dmg)
        print("Enemy attacks for", enemy_dmg)
 
-       defeated_enemies = 0
-       for enemy in enemies:
-              if enemy.get_hp() == 0:
-                     defeated_enemies += 1
-
-       if defeated_enemies == len(enemies):
-              print(bcolors.OKGREEN + "You Win!" + bcolors.ENDC)
-              running = False
-
-       defeated_players = 0
-       for player in players:
-              if player.get_hp() == 0:
-                     defeated_players += 1
-
-       if defeated_players == len(players):
-              print(bcolors.FAIL + "The Enemy has defeated you!")
-              running = False
+       deathcheck = players[target].death(players)
+       if deathcheck != "":
+              print("Ally", deathcheck, "has been killed by", enemy.name.replace(" ", ""))
+              if len(players) == 0:
+                     print(bcolors.FAIL + "You have been Defeated!" + bcolors.ENDC)
+                     running = False
