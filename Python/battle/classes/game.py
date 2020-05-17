@@ -88,6 +88,53 @@ class Person:
             choice = int(input("    Choose target:"))-1
         return choice
 
+    def lowest_cost_spell(self):
+        min_cost = 9999
+        for spell in self.mgc:
+            if spell.cost < min_cost:
+                min_cost = spell.cost
+        return min_cost
+
+    def items_avaliable(self):
+        default = True
+        for item in self.items:
+           if item["quantity"] == 0:
+               default = False
+        return default
+
+
+    def choose_enemy_spell(self):
+        mgc_choice = random.randrange(0, len(self.mgc))
+        spell = self.mgc[mgc_choice]
+        mgc_dmg = spell.generate_damage()
+        pct = self.hp/self.maxhp
+
+        if self.mp < spell.cost or spell.type == "white" and pct > 60:
+            self.choose_enemy_spell()
+        else:
+            return spell, mgc_dmg
+
+    def choose_enemy_item(self):
+        #health - 0, mana - 1, dmg - 2
+        pcth = self.hp/self.maxhp
+        pctm = self.mp/self.maxmp
+
+        item_choice = random.randrange(0, len(self.items))
+
+        if not self.items[item_choice]["quantity"] > 0:
+            self.choose_enemy_item()
+
+        if item_choice == 0 and pcth > 0.7:
+            self.choose_enemy_item()
+
+        if item_choice == 1 and pctm > 0.7:
+            self.choose_enemy_item()
+
+        item = self.items[item_choice]["item"]
+        prop = item.prop
+
+        return item, prop
+
     def death(self, enemies):
         deathcheck = ""
         if self.hp == 0:
@@ -122,7 +169,7 @@ class Person:
         else:
             current_hp = hp_string
 
-        print("                     __________________________________________________ ")
+        print("                      __________________________________________________ ")
         print(bcolors.BOLD + self.name +  "   "  + current_hp +" |" + bcolors.FAIL
               + hp_bar + bcolors.ENDC + bcolors.BOLD + "|     ")
 

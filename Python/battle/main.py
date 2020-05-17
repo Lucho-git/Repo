@@ -21,10 +21,11 @@ superpotion = Item("Super Potion", "potion", "Heals 500 HP", 500)
 elixer = Item("Elixer", "elixer", "Fully restores HP/MP of one party member", 9999)
 hielixer = Item("MegaElixer", "elixer", "Fully restores party's HP/MP", 9999)
 
-grenade = Item("Grenade", "attack", "Deals 500 damage", 500)
+grenade = Item("Grenade", "attack", "Deals 1000 damage", 1000)
 
 #Create spell array
 player_spells = [fire, thunder, blizzard, meteor, quake, cure, cura]
+enemy_spells = [fire, meteor, cure]
 
 #Create item array
 player_items = [{"item": potion, "quantity": 15},
@@ -34,15 +35,19 @@ player_items = [{"item": potion, "quantity": 15},
                 {"item": hielixer, "quantity": 1},
                 {"item": grenade, "quantity": 5}]
 
+enemy_items = [{"item": superpotion, "quantity": 2},
+               {"item": elixer, "quantity": 1},
+               {"item": grenade, "quantity": 1}]
+
 #Instantiate People
 player1 = Person("Valos:",3260, 132, 60, 34, player_spells, player_items)
 player2 = Person("Nick :",4160, 188, 60, 34, player_spells, player_items)
 player3 = Person("Robot:",3089, 174, 60, 34, player_spells, player_items)
 
 #Instantiate Enemies
-enemy1 = Person("Imp  ",1250, 130, 560, 325, [], [])
-enemy2 = Person("Magus",12500, 221, 725, 25, [], [])
-enemy3 = Person("Imp  ",1250, 130, 560, 325, [], [])
+enemy1 = Person("Imp   ",1250, 130, 560, 325, enemy_spells, enemy_items)
+enemy2 = Person("Magus ",12500, 221, 725, 25, enemy_spells, enemy_items)
+enemy3 = Person("Imp   ",1250, 130, 560, 325, enemy_spells, enemy_items)
 
 
 #Create player array
@@ -164,19 +169,90 @@ while running:
                                           running = False
                                           continue
 
-
        if not running:
               continue
 
-       enemy_choice = 1
-       target = random.randrange(0, len(players))
-       enemy_dmg = enemies[0].generate_damage()
-       players[target].take_damage(enemy_dmg)
-       print("Enemy attacks for", enemy_dmg)
+       for enemy in enemies:
+              choose_action = True
+              enemy_choice = random.randrange(0, 3)
+              while choose_action:
+                     choose_action = False
 
-       deathcheck = players[target].death(players)
-       if deathcheck != "":
-              print("Ally", deathcheck, "has been killed by", enemy.name.replace(" ", ""))
-              if len(players) == 0:
-                     print(bcolors.FAIL + "You have been Defeated!" + bcolors.ENDC)
-                     running = False
+                     if enemy_choice == 0:
+
+                            target = random.randrange(0, len(players))
+                            enemy_dmg = enemies[0].generate_damage()
+                            players[target].take_damage(enemy_dmg)
+                            print(enemy.name.replace(" ", ""), "attacks", players[target].name, "for", enemy_dmg)
+
+                            deathcheck = players[target].death(players)
+                            if deathcheck != "":
+                                   print("Ally", deathcheck, "has been killed by", enemy.name.replace(" ", ""))
+                                   if len(players) == 0:
+                                          print(bcolors.FAIL + "You have been Defeated!" + bcolors.ENDC)
+                                          running = False
+
+                     elif enemy_choice == 1:
+
+                            mana_check = enemy.lowest_cost_spell()
+                            if enemy.mp >= mana_check:
+                                   spell, mgc_dmg = enemy.choose_enemy_spell()
+                            else:
+                                   enemy_choice == 2
+                                   continue
+
+                            if spell.type == "white":
+                                   enemy.heal(mgc_dmg)
+                                   print(bcolors.OKBLUE + '\n' + enemy.name.replace(" ", ""), "heals for:", str(mgc_dmg),
+                                         "points of HP" + bcolors.ENDC)
+
+                            elif spell.type == "black":
+                                   target = random.randrange(0, len(players))
+                                   players[target].take_damage(mgc_dmg)
+                                   print(bcolors.OKBLUE + "\n" + enemy.name.replace(" ", ""), spell.name, "deals", str(mgc_dmg),
+                                         "points of damage to", players[target].name + bcolors.ENDC)
+
+                                   deathcheck = players[target].death(players)
+                                   if deathcheck != "":
+                                          print("Ally", deathcheck, "has been killed by", enemy.name.replace(" ", ""))
+                                          if len(players) == 0:
+                                                 print(bcolors.FAIL + "You have been Defeated!" + bcolors.ENDC)
+                                                 running = False
+
+                     elif enemy_choice == 2:
+                            item = None
+                            prop = None
+
+                            if enemy.items_avaliable():
+                                   item, prop = enemy.choose_enemy_item()
+                            else:
+                                   enemy_choice == 0
+                                   continue
+
+                            if item.type == "potion":
+                                   enemy.heal(item.prop)
+                                   print(bcolors.WARNING + "\n" + item.name + " heals", enemy.name.replace(" ", ""),
+                                         "for", str(prop), "HP" + bcolors.ENDC)
+                            elif item.type == "elixer":
+                                   if item.name == "MegaElixer":
+                                          for i in enemies:
+                                                 i.hp = i.maxhp
+                                                 i.mp = i.maxmp
+                                   else:
+                                          enemy.hp = enemy.maxhp
+                                          enemy.mp = enemy.maxmp
+                                   print(bcolors.WARNING + "\n", item.name, "fully restores",
+                                         enemy.name.replace(" ", ""), "HP/MP" + bcolors.ENDC)
+
+                            elif item.type == "attack":
+                                   target = random.randrange(0, len(players))
+                                   players[target].take_damage(prop)
+                                   print(bcolors.FAIL + "\n", item.name, "deals", str(item.prop),
+                                         "points of damage to", players[target].name + bcolors.ENDC)
+
+                                   deathcheck = players[target].death(players)
+                                   if deathcheck != "":
+                                          print("Ally", deathcheck, "has been killed by", enemy.name.replace(" ", ""))
+                                          if len(players) == 0:
+                                                 print(bcolors.FAIL + "You have been Defeated!" + bcolors.ENDC)
+                                                 running = False
