@@ -1,8 +1,9 @@
 import random
+from classes.game import bcolors
 
 class Spell:
     def __init__(self, name, cost, dmg, type):
-        self.name = name
+        self.name = bcolors.BOLD + bcolors.OKBLUE + name + bcolors.ENDC
         self.cost = cost
         self.dmg = dmg
         self.type = type

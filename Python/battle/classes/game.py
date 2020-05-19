@@ -10,6 +10,7 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+    LightCyan = "\033[96m"
 
 
 class Person:
@@ -96,10 +97,11 @@ class Person:
         return min_cost
 
     def items_avaliable(self):
-        default = True
+        default = False
         for item in self.items:
-           if item["quantity"] == 0:
-               default = False
+           if item["quantity"] > 0:
+               default = True
+
         return default
 
 
@@ -120,20 +122,35 @@ class Person:
         pctm = self.mp/self.maxmp
 
         item_choice = random.randrange(0, len(self.items))
+        notchosen = True
 
-        if not self.items[item_choice]["quantity"] > 0:
-            self.choose_enemy_item()
+        while notchosen:
+            if item_choice == 0 and pcth > 0.7:
+                item_choice = random.randrange(0, len(self.items))
+                print("loop2")
+                continue
 
-        if item_choice == 0 and pcth > 0.7:
-            self.choose_enemy_item()
+            if item_choice == 1 and pctm > 0.7:
+                item_choice = random.randrange(0, len(self.items))
+                print("loop3")
+                continue
 
-        if item_choice == 1 and pctm > 0.7:
-            self.choose_enemy_item()
+            if not self.items[item_choice]["quantity"] > 0:
+                # item_choice = random.randrange(0, len(self.items))
+                item = None
+                prop = None
+                print(self.name, "Cant choose Item")
+                break
 
-        item = self.items[item_choice]["item"]
-        prop = item.prop
+            print("Using Item")
+            print(self.items)
+            self.items[item_choice]["quantity"] -= 1
+            print(self.items)
+            item = self.items[item_choice]["item"]
+            prop = item.prop
+            notchosen = False
 
-        return item, prop
+        return item, prop, notchosen
 
     def death(self, enemies):
         deathcheck = ""
