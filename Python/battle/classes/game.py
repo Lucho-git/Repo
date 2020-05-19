@@ -127,25 +127,19 @@ class Person:
         while notchosen:
             if item_choice == 0 and pcth > 0.7:
                 item_choice = random.randrange(0, len(self.items))
-                print("loop2")
                 continue
 
             if item_choice == 1 and pctm > 0.7:
                 item_choice = random.randrange(0, len(self.items))
-                print("loop3")
                 continue
 
             if not self.items[item_choice]["quantity"] > 0:
                 # item_choice = random.randrange(0, len(self.items))
                 item = None
                 prop = None
-                print(self.name, "Cant choose Item")
                 break
 
-            print("Using Item")
-            print(self.items)
             self.items[item_choice]["quantity"] -= 1
-            print(self.items)
             item = self.items[item_choice]["item"]
             prop = item.prop
             notchosen = False

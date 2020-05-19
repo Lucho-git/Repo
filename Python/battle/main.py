@@ -68,6 +68,8 @@ i = 0
 print(bcolors.FAIL + bcolors.BOLD + "AN ENEMY ATTACKS!" + bcolors.ENDC)
 
 while running:
+
+       #Start Battle Sequence
        print("============================================================================")
        print("NAME                  HP                                      MP")
        for player in players:
@@ -77,28 +79,33 @@ while running:
               enemy.get_enemy_stats()
        print("\n============================================================================")
 
+       #Players Turn
        for player in players:
+
+              if not running:
+                     continue
 
               print("    "+player.name)
               player.choose_action()
               choice = input("    Choose action: ")
               index = int(choice) - 1
 
+              #Normal Attack
               if index == 0:
                      dmg = player.generate_damage()
                      enemy = enemies[player.choose_target(enemies)]
                      enemy.take_damage(dmg)
                      print(player.name, "attacked", enemy.name.replace(" ", ""), "for", dmg,
-                           "points of damage.")
+                           "points of damage.\n")
                      deathcheck = enemy.death(enemies)
                      if deathcheck != "":
-                            print("Enemy", deathcheck.replace(" ", ""), "has been killed by", player.name)
+                            print("Enemy", deathcheck.replace(" ", ""), "has been killed by", player.name + "\n")
                             if len(enemies) == 0:
                                    print(bcolors.OKGREEN + "You Win!" + bcolors.ENDC)
                                    running = False
                                    continue
 
-
+              #Magic Spell
               elif index == 1:
                      player.choose_mgc()
                      mgc_choice = int(input("Choose magic: ")) - 1
@@ -120,24 +127,24 @@ while running:
                      if spell.type == "white":
                             player.heal(mgc_dmg)
                             print(player.name, spell.name, "heals for:", str(mgc_dmg),
-                                  "points of HP" + bcolors.ENDC)
+                                  "points of HP" + bcolors.ENDC + "\n")
 
                      elif spell.type == "black":
                             enemy = enemies[player.choose_target(enemies)]
                             enemy.take_damage(mgc_dmg)
-                            print(bcolors.OKBLUE + "\n" + spell.name, "deals", str(mgc_dmg),
-                                  "points of damage to", enemy.name.replace(" ", "") + bcolors.ENDC)
+                            print(player.name, spell.name, "deals", str(mgc_dmg),
+                                  "points of damage to", enemy.name.replace(" ", "") + bcolors.ENDC + "\n")
 
                             deathcheck = enemy.death(enemies)
                             if deathcheck != "":
-                                   print("Enemy", deathcheck.replace(" ", "") , "has been killed by", player.name)
+                                   print("Enemy", deathcheck.replace(" ", ""), "has been killed by", player.name + "\n")
                                    if len(enemies) == 0:
                                           print(bcolors.OKGREEN + "You Win!" + bcolors.ENDC)
                                           running = False
                                           continue
 
 
-
+              #Item Choice
               elif index == 2:
                      player.choose_item()
                      item_choice = int(input("Choose item: ")) - 1
@@ -147,7 +154,6 @@ while running:
 
                      item = player.items[item_choice]["item"]
                      player.items[item_choice]["quantity"] -= 1
-                     print("Reduced Player", player.name, "Item Count by 1")
 
                      if player.items[item_choice]["quantity"] < 0:
                             player.items[item_choice]["quantity"] = 0
@@ -157,7 +163,7 @@ while running:
 
                      if item.type == "potion":
                             player.heal(item.prop)
-                            print(player.name, item.name + " heals for", str(item.prop), "HP" + bcolors.ENDC)
+                            print(player.name, item.name + " heals for", str(item.prop), "HP" + bcolors.ENDC + "\n")
                      elif item.type == "elixer":
                             if item.name == "MegaElixer":
                                    for i in players:
@@ -166,24 +172,27 @@ while running:
                             else:
                                    player.hp = player.maxhp
                                    player.mp = player.maxmp
-                            print("\n", player.name, item.name, "fully restores HP/MP" + bcolors.ENDC)
+                            print(player.name, item.name, "fully restores HP/MP" + bcolors.ENDC + "\n")
                      elif item.type == "attack":
                             enemy = enemies[player.choose_target(enemies)]
                             enemy.take_damage(item.prop)
                             print(player.name, item.name, "deals", str(item.prop),
-                                  "points of damage to", enemy.name.replace(" ", "") + bcolors.ENDC)
+                                  "points of damage to", enemy.name.replace(" ", "") + bcolors.ENDC + "\n")
                             deathcheck = enemy.death(enemies)
                             if deathcheck != "":
-                                   print("Enemy", deathcheck.replace(" ", ""), "has been killed by", player.name)
+                                   print("Enemy", deathcheck.replace(" ", ""), "has been killed by", player.name + "\n")
                                    if len(enemies) == 0:
                                           print(bcolors.OKGREEN + "You Win!" + bcolors.ENDC)
                                           running = False
                                           continue
 
-       if not running:
-              continue
+       print(bcolors.FAIL + "---Enemy Turn---" + bcolors.ENDC)
 
+       #Enemies Turn
        for enemy in enemies:
+              if not running:
+                     continue
+
               choose_action = True
               enemy_choice = random.randrange(0, 3)
               while choose_action:
@@ -193,13 +202,13 @@ while running:
                             target = random.randrange(0, len(players))
                             enemy_dmg = enemies[0].generate_damage()
                             players[target].take_damage(enemy_dmg)
-                            print(enemy.name.replace(" ", ""), "attacks", players[target].name, "for", enemy_dmg)
+                            print("\n" + enemy.name.replace(" ", ""), "attacks", players[target].name, "for", enemy_dmg)
 
                             deathcheck = players[target].death(players)
                             if deathcheck != "":
-                                   print("Ally", deathcheck, "has been killed by", enemy.name.replace(" ", ""))
+                                   print("\nAlly", deathcheck, "has been killed by", enemy.name.replace(" ", ""))
                                    if len(players) == 0:
-                                          print(bcolors.FAIL + "You have been Defeated!" + bcolors.ENDC)
+                                          print(bcolors.FAIL + "\n\n""You have been Defeated!" + bcolors.ENDC)
                                           running = False
 
                      elif enemy_choice == 1:
@@ -209,6 +218,7 @@ while running:
                                    spell, mgc_dmg = enemy.choose_enemy_spell()
                             else:
                                    enemy_choice = 2
+                                   choose_action = True
                                    continue
 
                             if spell.type == "white":
@@ -224,7 +234,7 @@ while running:
 
                                    deathcheck = players[target].death(players)
                                    if deathcheck != "":
-                                          print("Ally", deathcheck, "has been killed by", enemy.name.replace(" ", ""))
+                                          print("\nAlly", deathcheck, "has been killed by", enemy.name.replace(" ", ""))
                                           if len(players) == 0:
                                                  print(bcolors.FAIL + "You have been Defeated!" + bcolors.ENDC)
                                                  running = False
@@ -237,9 +247,11 @@ while running:
                                    item, prop, notchosen = enemy.choose_enemy_item()
                                    if notchosen:
                                           enemy_choice = 0
+                                          choose_action = True
                                           continue
                             else:
                                    enemy_choice = 0
+                                   choose_action = True
                                    continue
 
                             if item.type == "potion":
@@ -254,19 +266,21 @@ while running:
                                    else:
                                           enemy.hp = enemy.maxhp
                                           enemy.mp = enemy.maxmp
-                                   print("\n", enemy.name.replace(" ", "") + bcolors.WARNING, item.name, "fully restores",
-                                         enemy.name.replace(" ", ""), "HP/MP" + bcolors.ENDC)
+                                   print("\n", enemy.name.replace(" ", "") + bcolors.WARNING, item.name,
+                                         "fully restores", enemy.name.replace(" ", ""), "HP/MP" + bcolors.ENDC)
 
                             elif item.type == "attack":
                                    target = random.randrange(0, len(players))
                                    players[target].take_damage(prop)
-                                   print("\n", enemy.name.replace(" ", ""), item.name, "deals", str(item.prop),
+                                   print("\n" + enemy.name.replace(" ", ""), item.name, "deals", str(item.prop),
                                          "points of damage to", players[target].name + bcolors.ENDC)
 
                                    deathcheck = players[target].death(players)
                                    if deathcheck != "":
-                                          print("Ally", deathcheck, "has been killed by", enemy.name.replace(" ", ""))
+                                          print("\nAlly", deathcheck, "has been killed by", enemy.name.replace(" ", ""))
                                           if len(players) == 0:
                                                  print(bcolors.FAIL + "You have been Defeated!" + bcolors.ENDC)
-
                                                  running = False
+       if running:
+              print(bcolors.OKGREEN + "\n---Your Turn---\n" + bcolors.ENDC)
+
