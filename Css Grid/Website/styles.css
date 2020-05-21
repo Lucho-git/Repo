@@ -204,13 +204,15 @@ input{
 
 
 .tom{
-    display:grid;
+    display:flex;
     font-size:40px;
     color:black;
-    align-content: center;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+    height: 600px;
+    width: 600px;
+
+    border: yellow solid 1px;
+
+    background-color: blue;
 }
 
 .tom>img{

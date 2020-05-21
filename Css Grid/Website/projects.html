@@ -2,13 +2,16 @@
 <!DOCTYPE html>
 <html>
 
+
+
 <head>
     <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
+
     <style>
-        .website{
-            grid-template-columns:1fr 15fr 1fr;
-            grid-template-rows:70px 1fr 50px;
-        }
+            *,.website
     </style>
 </head>
 
@@ -19,30 +22,246 @@
         <div class="flexheader">
 
             <div 
-            class="nav logo" onclick="location.href='index.html'; "style="cursor: pointer;">&nbsp;&nbsp;&nbsp;<img class="animate" src="https://i.imgur.com/3owccbf.png"> <img class="static" src="https://i.imgur.com/7YYmK5t.gif">&nbsp;&nbsp;Lachlan Ross&nbsp;&nbsp;&nbsp;
+            class="nav logo" onclick="location.href='index.html'; "style="cursor: pointer;"><img class="animate" src="img/start.png"> <img class="static" src="img/compressed.gif">&nbsp;Lachlan Ross
             </div>
-           
-            <div class="nav navlink title1"><a href="projects.html" class="fill-div">Projects</a></div>
-            <div class="nav navlink title2"><a href="#" class="fill-div">Games</a></div>
-            <div class="nav navlink title3"><a href="#" class="fill-div">Resume</a></div>
-            <div class="nav navlink title4"><a href="#" class="fill-div">Experimentation</a></div>
-            <div class="nav navlink title5"><a href="#" class="fill-div">Contact Info</a></div>
-            <div class="nav searchbar"  onclick="location.href='#';" style="cursor: pointer;" >[__________________________]   🔍</div>
-            <span class ="sm-view">
 
-                <div class="nav searchbar"  onclick="location.href='#';" style="cursor: pointer;" >[]   🔍</div>
+            <span class ="lg-view">
+                <div class="nav navlink title1"><a href="projects.html" class="fill-div">Projects</a></div>
+                <div class="nav navlink title2"><a href="#" class="fill-div">Games</a></div>
+                <div class="nav navlink title3"><a href="#" class="fill-div"> Experiments </a></div>
+                <div class="nav navlink title4"><a href="#" class="fill-div">Resume</a></div>
+                <div class="nav navlink title5"><a href="#" class="fill-div">Contact Info</a></div>
+                <div class="nav searchbar">
+                    <div class ="searchcontainer">
+                        <input type="text" placeholder="" class ="search" style="cursor:text">
+                        <div class ="searchicon" style="cursor:pointer"> 🔍&nbsp;  </div>
+                    </div>
+                </div>
+            </span>
+            <span class ="sm-view">
+                <div class="nav navlink title1"><a href="projects.html" class="fill-div">Projects</a></div>
+                <div class="nav navlink title2"><a href="#" class="fill-div">Games</a></div>
+                <div class="nav navlink title3"><a href="#" class="fill-div"> Experiments</a></div>
+                <div class="nav navlink title4"><a href="#" class="fill-div">Resume</a></div>
+                <div class="nav navlink title5"><a href="#" class="fill-div">Contact Info</a></div>
+                <div class="nav searchbar" id="searchbar1" onclick="location.href='#';" style="cursor: pointer;" >🔍</div>
+            </span>
+            
+            <span class="xs-view">
+                <div class="nav filler">
+                    
+
+
+                </div>
+                <div class="nav searchbar" id= "searchbar2"  onclick="location.href='#';" style="cursor: pointer;" > 🔍 </div>
+                <div class="nav menu" id="menubtn" onclick="location.href='#';" style="cursor: pointer;" > ☰ </div>
+
             </span>
 
         </div>
 
-        <div class="box lsidebar"></div>
-        <div class="box main" style="color:#fff">CHECK IT OUT NEW WEBPAGE OMGGGGG</div>
-        <div class="box rsidebar"></div>
+        <div class="box lsidebar" id="lsidebar"></div>
+        <div class="box main">
+            <div class="tom" id= 'tom'>
+                
+                <script src="sketch.js"></script>
+                <script src="snake.js"></script>
+
+            </div>
+        </div>
+        <div class="box rsidebar" id="rsidebar"></div>
         <div class="box footer"></div>
+
+        <div class="belowheader">
+
+            <nav class="responsive-menu hideme" id="responsivemenu">
+                <ul class = "headerlinks">
+                    <li class= ''>
+                        <a href ="#">Projects</a>
+                    </li>
+                    <li class= ''>
+                        <a href ="#">Games</a>
+                    </li>
+                    <li class= ''>
+                        <a href ="#">Experiments</a>
+                    </li>
+                    <li class= ''>
+                        <a href ="#">Resume</a>
+                    </li>
+                    <li class= ''>
+                        <a href ="#">Contact Info</a>
+                    </li>
+                </ul>
+                <hr class="menubreak">
+            </nav>     
+            <div class ="searchbox hideme" id="searchbox">
+                <div class ="searchcontainer">
+                    <input type="text" placeholder="" class ="search" id="searchwrite" style="cursor:text">
+                    <div class ="searchicon" style="cursor:pointer"> 🔍 </div>
+                </div>
+            </div>
+        </div>
+            
+
+
+
+
+
     </div>
 
 
+    <script>
+        
+        let searchbar = document.getElementById('searchbar');
+        let searchwrite = document.getElementById('searchwrite');
+        let responsivemenu = document.getElementById("responsivemenu");
+        let menubtn = document.getElementById("menubtn");
+        let searchbox = document.getElementById("searchbox");
+        let media = undefined;
+        let x = window.matchMedia("(max-width: 1300px)")
+        let y = window.matchMedia("(max-width: 800px)");
 
+
+
+        searchbar1.addEventListener('click', () => showsearch(searchbox,searchbar1))
+        searchbar2.addEventListener('click', () => showsearch(searchbox,searchbar2))
+        menubtn.addEventListener('click', () => showmenu(responsivemenu,menubtn))
+
+
+        startingMedia(x)
+
+        x.addListener(myFunction) // Attach listener function on state changes
+        y.addListener(myFunction)
+
+
+
+        
+
+
+
+        function showmenu(inElement, inbtn){
+            if(inElement.classList.contains('hideme'))
+            {
+                inElement.classList.remove('hideme');
+                inElement.style.opacity = '1';
+                inElement.style.visibility = 'visible';
+                inbtn.style.backgroundImage = 'linear-gradient(90deg,#ff0000,#7e465a)';
+                inbtn.textContent = '×';
+                inbtn.style.fontSize = '180%';
+            }
+            else
+            {
+                inElement.classList.add('hideme');
+                inElement.style.opacity = '0';
+                inElement.style.visibility = 'hidden';
+                inbtn.style.backgroundImage = 'none';
+                inbtn.textContent = '☰';
+                inbtn.style.fontSize = '100%';
+
+            }
+        }
+
+        function hidesearch(inElement, searchbtn)
+        {
+            if(searchbtn.classList.contains('opensearch'))
+            {
+                searchbtn.classList.remove('opensearch');
+                inElement.classList.add('hideme');
+                inElement.style.opacity = '0';
+                inElement.style.visibility = 'hidden';
+                searchbtn.textContent = '🔍';
+                searchbtn.style.fontSize = '100%';
+            }   
+        }
+
+        function hidemenu (inElement, inbtn)
+        {
+            if(! inElement.classList.contains('hideme'))
+            {
+                inElement.classList.add('hideme');
+                inElement.style.opacity = '0';
+                inElement.style.visibility = 'hidden';
+                inbtn.style.backgroundImage = 'none';
+                inbtn.textContent = '☰';
+                inbtn.style.fontSize = '100%';
+            }
+        }
+
+        function showsearch(inElement, searchbtn){
+             if(searchbtn.classList.contains('opensearch'))
+            {
+                searchbtn.classList.remove('opensearch');
+                inElement.classList.add('hideme');
+                inElement.style.opacity = '0';
+                inElement.style.visibility = 'hidden';
+                searchbtn.textContent = '🔍';
+                searchbtn.style.fontSize = '100%';
+            }
+            else
+            {
+                searchbtn.classList.add('opensearch');
+                inElement.classList.remove('hideme');
+                inElement.style.opacity = '1';
+                inElement.style.visibility = 'visible';
+                searchwrite.focus();
+                searchbtn.textContent = '×';
+                searchbtn.style.fontSize = '180%';
+            }
+        }
+
+        function myFunction(x)
+        {
+
+            if(media == 0)
+            {
+                media = 1;
+            }
+            else if(media == 2)
+            {
+                media = 1;
+                hidesearch(searchbox, searchbar2);
+                hidemenu(responsivemenu, menubtn);
+            }
+
+            else if(media == 1)
+            {
+                if(x.matches)
+                {
+                    media = 2;
+                    hidesearch(searchbox, searchbar1);
+
+                }
+                else{
+                    media = 0;
+                    hidesearch(searchbox, searchbar1);
+                }
+            }  
+ 
+        }
+
+        function startingMedia(x)
+        {
+            if(!x.matches)
+            {
+                media = 0;
+            }
+            else if(x.matches)
+            {
+                x = window.matchMedia("(max-width: 800px)");
+                if(x.matches)
+                {
+                    media = 2;
+                }
+                else
+                {
+                    media = 1;
+                }
+            }
+            console.log(media);
+        }
+
+
+    </script>
 
 </body>
 
