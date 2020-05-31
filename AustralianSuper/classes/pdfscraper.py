@@ -6,7 +6,7 @@ class Scraper:
     def __init__(self, path):
         self.path = path
 
-    def download(self, url):
-        filename = Path(self.path)
+    def download(self, url, arg):
+        filename = Path(self.path + arg + '.pdf')
         response = requests.get(url)
         filename.write_bytes(response.content)

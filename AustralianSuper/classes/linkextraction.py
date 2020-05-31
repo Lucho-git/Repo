@@ -19,6 +19,9 @@ class Extraction:
         f = open(self.filename, "r")
         contents = f.read()
         aglist = contents.split("\n")
+        for a in aglist:
+            if len(a) < 3:
+                aglist.remove(a)
         return aglist
 
     def get_agmnts(self):
