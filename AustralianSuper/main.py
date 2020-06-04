@@ -46,6 +46,8 @@ for url in lnks:
     addCell = Cell(arg, url, 'pdfs/'+arg+'.pdf', 'pdfs/text/'+arg+'.txt', agreements[count], addSpread)
     addCell.spread.set_agreement_values(addCell.link, addCell.argument, addCell.agreement.title, addCell.agreement.print_n,
                                         addCell.agreement.industry, addCell.agreement.operative, addCell.agreement.expiry)
+    addCell.spread.set_nine_prior()
+
     cells.append(addCell)
     count += 1
 

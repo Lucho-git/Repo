@@ -48,4 +48,6 @@ class Cell:
             return first_term
         else:
             print("NO SEARCH TERMS MATCHED")
+            '''TODO Add better validation for no matched search terms, we know the first term is
+             usually within the first 2 pages'''
 

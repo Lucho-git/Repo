@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 class Spread:
     def __init__(self):
         self.all = list()
@@ -42,6 +44,11 @@ class Spread:
 
     def set_unions(self):
         pass
+
+    def set_nine_prior(self):
+        f_date = datetime.strptime(self.e_date, '%d %B %Y')
+        self.nine_prior = f_date - timedelta(274)
+        self.nine_prior = self.nine_prior.strftime('%d %B %Y')
 
     def set_agreement_values(self, link, ag_id, agreement_name, p_id, industry, o_date, e_date):
         self.link = link

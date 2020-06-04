@@ -56,5 +56,5 @@ class Extraction:
     def get_links(self):
         return self.links
 
-    def get_arguments(self):
+    def get_agreements(self):
         return self.agreements
