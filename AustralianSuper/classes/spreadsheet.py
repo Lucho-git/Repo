@@ -2,8 +2,10 @@ from datetime import datetime, timedelta
 
 class Spread:
     def __init__(self):
+    # spreadsheet is the date month
+
         self.all = list()
-        self.opportunity = "N/A"
+        self.opportunity = "N/A"              #Experimental slot
         self.amwu = None                      # big union
         self.awu = None                       # big union
         self.uv = None                        # big union
@@ -12,9 +14,9 @@ class Spread:
         self.tcfu = None                      # big union
         self.meau = None                      # big union
         self.asu = None                       # big union
-        self.other = None                     # not one of the big unions
+        self.other = None                     # not one of the relationship unions
         self.no_union = None                  # no union in document
-        self.name_union = None                # name of smaller union
+        self.name_union = None                # name of non relation union
         self.negotiator = "N/A"               # secret
         self.education_manager = "N/A"        # secret
         self.bmp_am = "N/A"                   # secret

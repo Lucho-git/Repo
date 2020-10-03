@@ -83,9 +83,11 @@ for i in industry_list:
     in_count = 0
     for t in term_list:
         if t.agreement.industry == i:
+            if t.agreement.industry == "Meat Industry":
+                print(t.agreement.link)
             in_count += 1
     i += "," + str(in_count)
-    '''print(i)'''
+    print(i)
 
 
 
@@ -105,6 +107,8 @@ for i in cells:
     results = i.return_first_term(searchcities)
     if results:
         i.spread.set_approval(results)
+        print(i.spread.approval)
+        print(i.spread.link)
 
 
 

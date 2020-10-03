@@ -40,14 +40,16 @@ class Cell:
         min_val = 9999999
         first_term = None
         for st in searchterms:
-            size = caps.find(st)
-            if size < min_val:
+            size = caps.find(st+",")
+            if size < min_val and not size == -1:
                 min_val = size
                 first_term = st
         if min_val < 9999999:
+            print(min_val)
             return first_term
         else:
-            print("NO SEARCH TERMS MATCHED")
+            print("NO SEARCH TERMS MATCHED\n"+self.link)
+            print(self.text)
             '''TODO Add better validation for no matched search terms, we know the first term is
              usually within the first 2 pages'''
 
